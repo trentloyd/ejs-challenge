@@ -20,6 +20,31 @@ app.get("/", function (req, res) {
   res.render("home", {startingContent: homeStartingContent});
 });
 
+//Capture about with '/about' and send ejs page along with variable
+app.get("/about", function (req, res) {
+  res.render("about", {aboutStartingContent: aboutContent});
+});
+
+//Capture contact with '/contact' and send ejs page along with variable
+app.get("/contact", function (req, res) {
+  res.render("contact", {contactStartingContent: contactContent});
+});
+
+//Capture compose get with '/compose' and send ejs page along with variable
+app.get("/compose", function (req, res) {
+  res.render("compose");
+});
+
+//Capture the compose post function
+app.post("/compose", function(req, res){
+  //console.log(req.body.postTitle);
+  var newPost = {
+    title:  req.body.postTitle,
+    body:   req.body.postBody
+  }
+  console.log(newPost);
+})
+
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
