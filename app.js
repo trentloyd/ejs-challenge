@@ -19,12 +19,10 @@ app.use(express.static("public"));
 
 //Capture root with '/' and send ejs page along with variable
 app.get("/", function (req, res) {
-  if(postLog.length === 0){
-    res.render("home", {startingContent: homeStartingContent});
-  } else {
-    res.render("home", {startingContent: postLog});
-  };
-  
+    res.render("home", {
+      startingContent: homeStartingContent,
+      posts: postLog
+    });
 
 });
 
@@ -55,6 +53,19 @@ app.post("/compose", function(req, res){
 
 })
 
+//Capture the route for /posts and print out the postname used in URL
+app.get('/posts/:postName', (req, res) => {
+  //console.log(req.params.postName);
+  const titleRequest = req.params.postName;
+
+  postLog.forEach(function(post){
+    const storedTitle = post.title;
+
+    if(storedTitle === titleRequest){
+      console.log("Match Found!");
+    };
+  });
+});
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
