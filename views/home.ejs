@@ -2,6 +2,10 @@
 
 <h1>Home</h1>
 
-<p> <%= startingContent %> </p>
+<p> <% for(let x = 0; x <= startingContent.length; x++){ %>
+    <%= startingContent[x].title; %>
+    <%= startingContent[x].body; %>
+    <% } %>
+</p>
 
 <%- include('partials/footer'); -%>
