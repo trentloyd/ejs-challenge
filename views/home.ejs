@@ -5,9 +5,9 @@
 <p> <%= startingContent %> </p>
 
 <% posts.forEach(function(post){ %>
-<h1><%= post.title; %> </h1>
-<p><%= _.truncate(post.body, {'length': 100, 'omission': '...' }); %> 
-<a href="<%= '/posts/' + post.title%>">Read More</a>
+<h1><%= post.Title; %> </h1>
+<p><%= _.truncate(post.Body, {'length': 100, 'omission': '...' }); %> 
+<a href="<%= '/posts/' + post._id%>">Read More</a>
 </p>
 <% }); %>
 
